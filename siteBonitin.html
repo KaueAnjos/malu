@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para o Meu Amor 💜</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --roxo: #7b2cbf;
+      --roxo-claro: #c77dff;
+      --pastel: #f4eaff;
+      --branco: #fafafa;
+      --texto: #333;
+      --sombra: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, var(--pastel), var(--branco));
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    section {
+      padding: 80px 10%;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--roxo);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #555;
+    }
+
+    /* CARDS */
+    .love-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--roxo);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--sombra);
+      transition: transform .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--roxo-claro);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* GALERIA */
+    .gallery h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--roxo);
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 20px;
+    }
+
+    .masonry img {
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: var(--sombra);
+      break-inside: avoid;
+    }
+
+      /* 📖 ADICIONADO: HISTÓRIA */
+    .history h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      color: var(--roxo);
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: var(--roxo-claro);
+      transform: translateX(-50%);
+    }
+
+    .moment {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: var(--sombra);
+      width: 45%;
+      margin: 30px 0;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.6s ease;
+    }
+
+    .moment.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .moment.left { left: 0; }
+    .moment.right { left: 55%; }
+
+    /* PLAYER */
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      box-shadow: var(--sombra);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .music-player button {
+      background: var(--roxo);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    /* CORAÇÕES */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 1.2rem;
+      color: rgba(123,44,191,0.3);
+      animation: float 8s linear infinite;
+      z-index: 0;
+    }
+
+    /* ANIMAÇÕES */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh) translateX(30px);
+        opacity: 0;
+      }
+    }
+
+    /* RESPONSIVO */
+    @media(max-width: 900px) {
+      .masonry {
+        column-count: 2;
+      }
+    }
+
+    @media(max-width: 600px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .masonry {
+        column-count: 1;
+      }
+    }
+
+    /* 💜 BOTÃO DA GALERIA */
+.gallery-button-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.gallery-button {
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--roxo), var(--roxo-claro));
+  color: white;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(123,44,191,0.3);
+}
+
+/* 💌 MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 50px;
+  max-width: 600px;
+  border-radius: 25px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.modal h2 {
+  color: var(--roxo);
+  margin-bottom: 20px;
+}
+
+.modal p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.close-modal {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: none;
+  background: var(--roxo);
+  color: white;
+  cursor: pointer;
+}
+
+  .container-play{
+  text-align: center;
+  margin-top: 50px;
+  }
+
+.container-play h3{
+    padding: 16px 40px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--roxo), var(--roxo-claro));
+  color: white;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Para o Meu Amor 💜</h1>
+    <p>Uma pequena página para tentar mostrar um pouco do tamanho do amor que sinto por você, por mudar meus dias, iluminar meu caminho e me apresentar a felicidade.</p>
+    <br>
+    <div class="container-play">
+      <h3>Clique no botão Play!</h3>
+    </div>
+
+  </section>
+
+  <!-- POR QUE EU TE AMO -->
+  <section class="love-section">
+    <h2>Por que eu te amo?</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">😊</div>
+        <h3>O Sorriso</h3>
+        <p>Ele ilumina qualquer lugar onde você chega, ele reflete sua felicidade e amor ver ele, pois sempre me deixa alegre também.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💇‍♀️</div>
+        <h3>Os olhos</h3>
+        <p>Simplesmente um olhar perfeito, amo a cor deles, o brilho no olhar e amo esse mesmo brilho ao me ver falando besteiras.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">😂</div>
+        <h3>O seu cuidado</h3>
+        <p>A forma como se importa com cada detalhe, se importa em me ter por perto e de sempre querer que eu mostre mais de mim mesmo.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💖</div>
+        <h3>Seu beijo e seu abraço</h3>
+        <p>Nunca me canso daquele abraço apertado e gostoso que me dá, muito menos do beijo, mesmo poucos, eu quero sentir aquela quimica perfeira pra sempre.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Personalidade</h3>
+        <p>Como o Jorge Vercillo diz: "Ela une todas as coisas" e você une tudo o que um homem precisa, sua energia, seu jeito bricalhão, seu jeito meigo, seu jeito carinho, seu jeito timido, tudo da sua personalidade, mesmo que simples, formam o que você é e te torna especial, e te torna a mulher que une tudo que preciso para mim.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="history">
+    <h2>Nossa História</h2>
+    <div class="timeline">
+      <div class="moment left"><h3>O dia em que nossos caminhos se cruzaram: 14/12/2024</h3> <br> Nesse dia não fazia ideia de quem estava me seguindo, não imginava que uma menina aleatória que nem lembrava que estudava comigo ia me seguir no instagram.</div>
+      <div class="moment right"><h3>A primeira conversa: 26/02/2025</h3> <br> A primeira conversa puxada por conta de um storys sobre a Etec, fez de uma unica mensagem virar uma rotina de conversas.</div>
+      <div class="moment left"><h3>A primeira conversa presencial: 30/03/2025</h3> <br> Aqui foi o dia que cheguei pra conversar no meio das meninas na maior cara de pau e você com aquele jeito timido ficou no meio dos loucos.</div>
+      <div class="moment right"><h3>Dia que percebi os meus sentimentos: 12/07/2025 <br> </h3>Nesse dia, fiquei em choque para conversar com você, foi dificil, pra quem antes não tinha timidez e não ligou de falar na priemeira vez, agora já estava apaixonado e não sabia o que fazer.</div>
+      <div class="moment left"><h3>Primeira foto juntos: 17/07/2025</h3> <br> Foi o teceiro dia do congresso e o unico dia que tive coragem de conversar com você, depois de uma luta e foi nossa primeira foto juntos.</div>
+      <div class="moment right"><h3>Primeira vez que saimos juntos: 09/08/2025 <br> </h3>Depois de muito enrolação e depois de reunir coragem por pensar que seus pais não iam deixar ir, decide chamar para sair e aqui foi quando realmente tudo começou a fluir.</div>
+      <div class="moment left"><h3>Primeiro "Eu te amo": 13/11/2025</h3> <br> Esse dia eu não esperava receber um "eu te amo", mesmo que virtual, fiquei surpreso e sem reação.</div>
+      <div class="moment right"><h3>O dia em que conheci sua família: 15/11/2025</h3> <br>Um dia que ficou marcado, conheci todo mundo, me senti abraçado e vi que era uma família sem igual.</div>
+      <div class="moment left"><h3>Dia mais importante: 28/11/2025 <br> </h3>Para mim o dia mais importante e significativo, foi o dia em que ficamos de mãos dadas e assitindo ao filme, não sei o por que, mas foi muito importante pra mim.</div>
+      <div class="moment right"><h3>Primeiro beijo: 19/12/2025</h3> <br> No uber, um unico pensamento veio a cabeça: "dá um beijo nela", foi o que aconteceu, não foi o primeiro beijo que eu imaginava, mas era o que precisava, já tinhamos sentimentos demais e só fiz o que meu coração mandou.</div>
+      <div class="moment left"><h3>Passo importante para nós: 21/12/2025 <br> </h3>Aqui foi quando nossos pais se conheceram e foi um momento importante, aqui que ia mostrar se realmente nossas família iam se dar bem e se tudo fluir como esperávamos.</div>
+      <div class="moment right"><h3>Dia de hoje que faço essa declaração: 13/01/2026</h3> <br> Esses foram uns dos passos mais importantes que tomamos até chegar aqui, teve muito mais coisa e vai ter muito mais, isso eu garanto. Não vejo a hora de você ter sua aliança, de você verdadeiramente estar comigo, de estarmos juntos, vivermos juntos, sem ficar "escondendo". Essa linha do tempo da nossa história ta pequena, eu sei, mas vai aumentar, vai ter muitas histórias, desde o pedido de namoro, até aliança, até noivado, casamento, viagens, nossos filhos e vivendo para sempre juntos.</div>
+    </div>
+  </section>
+
+  <!-- PLAYER -->
+  <div class="music-player">
+    <audio id="music" src="Sylvia Salustti, Raphael Rossato - Vejo Enfim a Luz Brilhar (De ＂Enrolados＂⧸Vídeo Oficial).mp3"></audio>
+    <button onclick="toggleMusic()">▶</button>
+  </div>
+
+
+  <!-- GALERIA -->
+  <section class="gallery">
+    <h2>Nossos Momentos</h2>
+    <div class="masonry">
+      <img src="img1.jpeg" alt="">
+      <img src="img2.jpeg" alt="">
+      <img src="img3.jpeg" alt="">
+      <img src="img4.jpeg" alt="">
+      <img src="img5.jpeg" alt="">
+      <img src="img6.jpeg" alt="">
+      <img src="img7.jpeg" alt="">
+      <img src="img8.jpeg" alt="">
+      <img src="img9.jpeg" alt="">
+      <img src="img10.jpeg" alt="">
+      <img src="img11.jpeg" alt="">
+      <img src="img12.jpeg" alt="">
+      <img src="img13.jpeg" alt="">
+    </div>
+    <div class="gallery-button-container">
+  <button class="gallery-button" onclick="openModal()">
+    Leia isso com carinho 💌
+  </button>
+</div>
+  </section>
+  
+
+  <!-- PLAYER -->
+  <div class="music-player">
+    <audio id="music" src="Sylvia Salustti, Raphael Rossato - Vejo Enfim a Luz Brilhar (De ＂Enrolados＂⧸Vídeo Oficial).mp3" autoplay loop muted></audio>
+
+    <button onclick="toggleMusic()">▶</button>
+  </div>
+
+
+  <div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2>Para você, minha nega 💜</h2>
+    <p>
+      Se você chegou até aqui, é porque percorreu cada pedacinho da nossa história.
+      Cada foto, cada data, cada palavra foi colocada com carinho, porque você é
+      o meu lugar seguro, o meu sorriso, minha felicidade e a certeza que eu quero todos os dias.
+      <br><br>
+      Eu te amo não só pelo que você é, mas pelo que eu me torno quando estou com você.
+      E se depender de mim, essa história nunca vai ter fim.
+      Vou te amar com todas as forças, já estou amando nesse início de história que estamos fazendo, mas vou amar assim para todo o sempre.
+      EU TE AMO💜
+    </p>
+    <button class="close-modal" onclick="closeModal()">Fechar 💜</button>
+  </div>
+</div>
+
+  <!-- CORAÇÕES -->
+  <script>
+  const music = document.getElementById('music');
+  music.volume = 0.15; // volume inicial baixo
+
+  // tenta tocar ao entrar (alguns navegadores exigem interação)
+  window.addEventListener('load', () => {
+    const playPromise = music.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // autoplay bloqueado, usuário pode clicar no botão
+      });
+    }
+  });
+
+  function toggleMusic() {
+    music.paused ? music.play() : music.pause();
+  }
+
+    // Scroll Reveal
+    const revealElements = document.querySelectorAll('.card, .masonry img, .moment');
+    window.addEventListener('scroll', () => {
+      revealElements.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+          el.classList.add('show');
+        }
+      });
+    });
+
+    // Corações flutuando
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '💜';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 800);
+
+  function openModal() {
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  </script>
+
+</body>
+</html>
